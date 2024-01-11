@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: CustomTheme.customTheme,
       initialRoute: '/',
       routes: {
-        '/': (context) => LandingPage(),
+        '/': (context) => const LandingPage(),
       },
     );
   }
