@@ -30,6 +30,7 @@ class CustomTheme {
       focusColor: focusColor,
       primaryColor: primaryColor,
       indicatorColor: indicatorColor,
+      cardColor: backgroundColor,
 
       //*Fonts
       fontFamily: GoogleFonts.solway().fontFamily,
@@ -41,6 +42,10 @@ class CustomTheme {
         ),
         displayMedium: TextStyle(
           fontSize: 22.0,
+          color: primaryColor,
+        ),
+        titleLarge: TextStyle(
+          fontSize: 20.0,
           color: primaryColor,
         ),
         bodyLarge: TextStyle(

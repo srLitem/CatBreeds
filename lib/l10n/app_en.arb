@@ -2,5 +2,9 @@
   "landingPage": "Landing Page",
   "@landingPage": {
     "description": "The landing page title"
+  },
+  "more": "More",
+  "@more": {
+    "description": "To potentially concatenate with ..."
   }
 }
