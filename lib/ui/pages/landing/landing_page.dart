@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    var l10n = AppLocalizations.of(context);
+    return Scaffold(
         body: Center(
-      child: Text('Landing Page'),
+      child: Text(l10n!.landingPage),
     ));
   }
 }

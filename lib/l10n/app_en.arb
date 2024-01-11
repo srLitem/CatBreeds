@@ -1,0 +1,6 @@
+{
+  "landingPage": "Landing Page",
+  "@landingPage": {
+    "description": "The landing page title"
+  }
+}
