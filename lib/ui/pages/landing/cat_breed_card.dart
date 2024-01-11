@@ -53,7 +53,8 @@ class CatBreedCard extends StatelessWidget {
 
   Widget _buildCatImage() {
     return Image.network(
-      catBreed.imageUrl,
+      //TODO: Reaplce with right url
+      'https://api.thecatapi.com/v1/images/${catBreed.referenceImageId}.jpg',
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) return child;
         return const Center(child: CircularProgressIndicator());
@@ -70,7 +71,7 @@ class CatBreedCard extends StatelessWidget {
       children: <Widget>[
         Flexible(
           child: Text(
-            catBreed.country,
+            catBreed.origin,
             overflow: TextOverflow.ellipsis,
           ),
         ),

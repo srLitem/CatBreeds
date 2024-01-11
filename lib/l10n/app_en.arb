@@ -14,5 +14,17 @@
   "intelligence": "Intelligence",
   "@intelligence": {
     "description": "Inteligencia"
+  },
+  "name": "Name",
+  "@name": {
+    "description": "Nombre"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Descripción"
+  },
+  "temperament": "Temperament",
+  "@temperament": {
+    "description": "Temperamento"
   }
 }

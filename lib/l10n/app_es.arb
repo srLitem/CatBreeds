@@ -2,5 +2,8 @@
     "helloWorld": "Pagina inicial",
     "more": "Más",
     "country": "País",
-    "intelligence": "Inteligencia"
+    "intelligence": "Inteligencia",
+    "name": "Nombre",
+    "description": "Descripción",
+    "temperament": "Temperamento"
 }

@@ -22,7 +22,8 @@ class CatBreedDetailPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
             child: Image.network(
-              catBreed.imageUrl,
+              //TODO: Reaplce with right url
+              'https://api.thecatapi.com/v1/images/${catBreed.referenceImageId}.jpg',
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height * 0.4,
               width: double.infinity,
@@ -32,7 +33,12 @@ class CatBreedDetailPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  _buildDetailSection(context, l10n.country, catBreed.country),
+                  _buildDetailSection(context, l10n.name, catBreed.name),
+                  _buildDetailSection(context, l10n.country, catBreed.origin),
+                  _buildDetailSection(
+                      context, l10n.description, catBreed.description),
+                  _buildDetailSection(
+                      context, l10n.temperament, catBreed.temperament),
                   _buildDetailSection(
                       context, l10n.intelligence, catBreed.intelligence),
                 ],

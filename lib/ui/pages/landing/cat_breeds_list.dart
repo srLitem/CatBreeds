@@ -9,20 +9,29 @@ class CatBreedsList extends StatelessWidget {
   Widget build(BuildContext context) {
     List<CatBreed> catBreeds = [
       CatBreed(
+          id: "test1",
           name: 'Breed 1',
-          country: 'Country 1',
+          description: "Description 1",
+          temperament: "Temperament 1",
+          origin: 'Country 1',
           intelligence: 'High',
-          imageUrl: "https://placekitten.com/200/200"),
+          referenceImageId: "https://placekitten.com/200/200"),
       CatBreed(
+          id: "test2",
           name: 'Breed 2',
-          country: 'Country 2',
+          description: "Description 2",
+          temperament: "Temperament 2",
+          origin: 'Country 2',
           intelligence: 'Medium',
-          imageUrl: "https://placekitten.com/200/200"),
+          referenceImageId: "https://placekitten.com/200/200"),
       CatBreed(
+          id: "test3",
           name: 'Breed 3',
-          country: 'Country 3',
+          description: "Description 3",
+          temperament: "Temperament 3",
+          origin: 'Country 3',
           intelligence: 'Low',
-          imageUrl: "https://placekitten.com/200/200"),
+          referenceImageId: "https://placekitten.com/200/200"),
     ];
 
     return ListView.builder(
