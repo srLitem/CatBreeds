@@ -15,7 +15,7 @@ class CustomTheme {
       800: Color(0xFFEE833B),
       900: Color(0xFFEB742E),
     });
-    const Color accentColor = Color(0xFFF1A661);
+    const Color accentColor = Color.fromARGB(255, 149, 64, 58);
     const Color focusColor = Color(0xFFFFD8A9);
     const Color backgroundColor = Color(0xFFFDEEDC);
     const Color indicatorColor = Color.fromARGB(255, 149, 64, 58);
@@ -55,6 +55,10 @@ class CustomTheme {
         bodyMedium: TextStyle(
           fontSize: 18.0,
           color: primaryColor,
+        ),
+        bodySmall: TextStyle(
+          fontSize: 16.0,
+          color: accentColor,
         ),
       ),
     );

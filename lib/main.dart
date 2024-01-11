@@ -1,4 +1,6 @@
+import 'package:catbreeds/models/cat_breed.dart';
 import 'package:catbreeds/settings/custom_theme.dart';
+import 'package:catbreeds/ui/pages/details/cat_breed_details_page.dart';
 import 'package:catbreeds/ui/pages/landing/landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -30,7 +32,19 @@ class MyApp extends StatelessWidget {
       theme: CustomTheme.customTheme,
       initialRoute: '/',
       routes: {
-        '/': (context) => const LandingPage(),
+        '/': (context) =>
+            const LandingPage(), // Keep the Landing Page route here
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/details') {
+          final catBreed = settings.arguments as CatBreed;
+          return MaterialPageRoute(
+            builder: (context) {
+              return CatBreedDetailPage(catBreed: catBreed);
+            },
+          );
+        }
+        return null;
       },
     );
   }

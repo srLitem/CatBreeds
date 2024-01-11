@@ -1,5 +1,6 @@
 import 'package:catbreeds/models/cat_breed.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CatBreedDetailPage extends StatelessWidget {
   final CatBreed catBreed;
@@ -11,28 +12,31 @@ class CatBreedDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 200.0,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(catBreed.name),
-              background: Image.network(
-                catBreed.imageUrl,
-                fit: BoxFit.cover,
-              ),
+      appBar: AppBar(
+        title: Text(catBreed.name),
+      ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
+            child: Image.network(
+              catBreed.imageUrl,
+              fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: double.infinity,
             ),
           ),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                _buildDetailSection(context, 'Country', catBreed.country),
-                _buildDetailSection(
-                    context, 'Intelligence', catBreed.intelligence),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.5),
-              ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  _buildDetailSection(context, l10n.country, catBreed.country),
+                  _buildDetailSection(
+                      context, l10n.intelligence, catBreed.intelligence),
+                ],
+              ),
             ),
           ),
         ],
@@ -42,8 +46,8 @@ class CatBreedDetailPage extends StatelessWidget {
 
   Widget _buildDetailSection(BuildContext context, String title, String value) {
     return ListTile(
-      title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
-      subtitle: Text(value, style: Theme.of(context).textTheme.bodyLarge),
+      title: Text(title, style: Theme.of(context).textTheme.displayMedium),
+      subtitle: Text(value, style: Theme.of(context).textTheme.bodySmall),
     );
   }
 }

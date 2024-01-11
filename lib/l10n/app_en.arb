@@ -6,5 +6,13 @@
   "more": "More",
   "@more": {
     "description": "To potentially concatenate with ..."
+  },
+  "country": "Country",
+  "@country": {
+    "description": "The country name"
+  },
+  "intelligence": "Intelligence",
+  "@intelligence": {
+    "description": "Inteligencia"
   }
 }

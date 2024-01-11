@@ -46,13 +46,12 @@ class CatBreedCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Flexible(child: MoreButton(l10n: l10n)),
+        Flexible(child: MoreButton(catBreed: catBreed)),
       ],
     );
   }
 
   Widget _buildCatImage() {
-    //TODO: I have to replace with actual image URL from the APi from Pragma
     return Image.network(
       catBreed.imageUrl,
       loadingBuilder: (context, child, loadingProgress) {
