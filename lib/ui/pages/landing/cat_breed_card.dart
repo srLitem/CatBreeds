@@ -53,9 +53,8 @@ class CatBreedCard extends StatelessWidget {
 
   Widget _buildCatImage() {
     //TODO: I have to replace with actual image URL from the APi from Pragma
-    const imageUrl = 'https://placekitten.com/200/200';
     return Image.network(
-      imageUrl,
+      catBreed.imageUrl,
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress == null) return child;
         return const Center(child: CircularProgressIndicator());

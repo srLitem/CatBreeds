@@ -8,9 +8,21 @@ class CatBreedsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<CatBreed> catBreeds = [
-      CatBreed(name: 'Breed 1', country: 'Country 1', intelligence: 'High'),
-      CatBreed(name: 'Breed 2', country: 'Country 2', intelligence: 'Medium'),
-      CatBreed(name: 'Breed 3', country: 'Country 3', intelligence: 'Low'),
+      CatBreed(
+          name: 'Breed 1',
+          country: 'Country 1',
+          intelligence: 'High',
+          imageUrl: "https://placekitten.com/200/200"),
+      CatBreed(
+          name: 'Breed 2',
+          country: 'Country 2',
+          intelligence: 'Medium',
+          imageUrl: "https://placekitten.com/200/200"),
+      CatBreed(
+          name: 'Breed 3',
+          country: 'Country 3',
+          intelligence: 'Low',
+          imageUrl: "https://placekitten.com/200/200"),
     ];
 
     return ListView.builder(
