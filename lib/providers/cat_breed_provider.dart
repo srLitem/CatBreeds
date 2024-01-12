@@ -1,21 +1,19 @@
-import 'dart:convert';
+import 'package:catbreeds/api/cat_api_source.dart';
+import 'package:catbreeds/models/cat_breed.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import '../models/cat_breed.dart';
+import '../services/cat_breed_service.dart';
 
-final catBreedProvider = FutureProvider<List<CatBreed>>((ref) async {
-  final response = await http.get(
-    Uri.parse('https://api.thecatapi.com/v1/breeds'),
-    headers: {
-      'x-api-key': dotenv.env['CAT_API_KEY']!,
-    },
-  );
+//* This file will define the providers that will be connsudmed by the UI
 
-  if (response.statusCode == 200) {
-    List<dynamic> catBreedsJson = jsonDecode(response.body) as List;
-    return catBreedsJson.map((json) => CatBreed.fromJson(json)).toList();
-  } else {
-    throw Exception('Failed to load cat breeds');
-  }
+final catApiSourceProvider = Provider<CatApiSource>((ref) {
+  return CatApiSource();
+});
+
+final catBreedServiceProvider = Provider<CatBreedService>((ref) {
+  return CatBreedService(ref.read(catApiSourceProvider));
+});
+
+final catBreedProvider = FutureProvider<List<CatBreed>>((ref) {
+  final service = ref.read(catBreedServiceProvider);
+  return service.getCatBreeds();
 });
