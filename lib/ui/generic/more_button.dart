@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+//* This is the widget used to go to the details page
+
 class MoreButton extends StatelessWidget {
   final CatBreed catBreed;
 

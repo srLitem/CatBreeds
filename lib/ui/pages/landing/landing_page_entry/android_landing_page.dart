@@ -1,6 +1,7 @@
 import 'package:catbreeds/ui/pages/landing/cat_breeds_list.dart';
 import 'package:flutter/material.dart';
 
+//* Landing page for android
 class AndroidLandingPage extends StatelessWidget {
   const AndroidLandingPage({super.key});
 

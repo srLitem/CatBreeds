@@ -2,6 +2,7 @@ import 'package:catbreeds/models/cat_breed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+//* This is the Page used to show all the data of one cat
 class CatBreedDetailPage extends StatelessWidget {
   final CatBreed catBreed;
 

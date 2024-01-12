@@ -2,6 +2,7 @@ import 'package:catbreeds/ui/pages/landing/cat_breeds_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//* Landing page for iOS
 class IOSLandingPage extends StatelessWidget {
   const IOSLandingPage({super.key});
 

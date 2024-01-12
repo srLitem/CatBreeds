@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:catbreeds/providers/cat_breed_provider.dart';
 
+// * This widget has the whole list of cats from the landing page
 class CatBreedsList extends ConsumerWidget {
   const CatBreedsList({super.key});
 

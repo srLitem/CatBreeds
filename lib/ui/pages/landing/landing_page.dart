@@ -3,6 +3,7 @@ import 'package:catbreeds/ui/pages/landing/landing_page_entry/android_landing_pa
 import 'package:catbreeds/ui/pages/landing/landing_page_entry/ios_landing_page.dart';
 import 'package:flutter/cupertino.dart';
 
+//* Here we check and show the proper landing page
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
 

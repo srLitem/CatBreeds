@@ -1,3 +1,4 @@
+//* This file has the model used to get the data from the API
 class CatBreed {
   final String id;
   final String name;

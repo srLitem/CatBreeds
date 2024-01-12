@@ -3,6 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:catbreeds/models/cat_breed.dart';
 import 'package:flutter/material.dart';
 
+//* As required, we use a card to show the cat preview data
+
 class CatBreedCard extends StatelessWidget {
   final CatBreed catBreed;
 

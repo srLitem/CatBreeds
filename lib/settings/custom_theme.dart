@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//* Here I defined the custom Theme for the APp
+
 class CustomTheme {
   static ThemeData get customTheme {
     const MaterialColor primaryColor = MaterialColor(0xFFE38B29, {
