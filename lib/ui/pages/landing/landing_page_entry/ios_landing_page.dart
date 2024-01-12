@@ -11,19 +11,16 @@ class IOSLandingPage extends ConsumerStatefulWidget {
 
 class _IOSLandingPageState extends ConsumerState<IOSLandingPage> {
   late TextEditingController _searchController;
-  late FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
     _searchController = TextEditingController();
-    _focusNode = FocusNode();
   }
 
   @override
   void dispose() {
     _searchController.dispose();
-    _focusNode.dispose();
     super.dispose();
   }
 
@@ -40,7 +37,6 @@ class _IOSLandingPageState extends ConsumerState<IOSLandingPage> {
               padding: const EdgeInsets.all(8.0),
               child: CupertinoSearchTextField(
                 controller: _searchController,
-                focusNode: _focusNode,
                 onChanged: (value) => setState(() {}),
               ),
             ),
