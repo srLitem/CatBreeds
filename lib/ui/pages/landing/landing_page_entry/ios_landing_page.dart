@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:catbreeds/ui/pages/landing/cat_breeds_list.dart';
 import 'package:catbreeds/ui/pages/landing/search_delegate.dart';
 import 'package:catbreeds/providers/cat_breed_provider.dart';
+import 'package:catbreeds/providers/search_provider.dart';
 import 'package:flutter/material.dart';
 
 class IOSLandingPage extends ConsumerStatefulWidget {
@@ -29,6 +30,8 @@ class _IOSLandingPageState extends ConsumerState<IOSLandingPage> {
 
   @override
   Widget build(BuildContext context) {
+    final searchQuery = ref.watch(searchQueryProvider);
+
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: const Text('Catbreeds'),
@@ -48,13 +51,13 @@ class _IOSLandingPageState extends ConsumerState<IOSLandingPage> {
               child: CupertinoSearchTextField(
                 controller: _searchController,
                 onChanged: (value) {
-                  setState(() {});
+                  ref.read(searchQueryProvider.notifier).state = value;
                 },
               ),
             ),
             Expanded(
               child: CatBreedsList(
-                searchQuery: _searchController.text,
+                searchQuery: searchQuery,
               ),
             ),
           ],
@@ -68,7 +71,11 @@ class _IOSLandingPageState extends ConsumerState<IOSLandingPage> {
       showSearch(
         context: context,
         delegate: CatBreedSearchDelegate(catBreeds),
-      );
+      ).then((result) {
+        if (result != null) {
+          ref.read(searchQueryProvider.notifier).state = result;
+        }
+      });
     });
   }
 }

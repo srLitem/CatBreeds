@@ -1,28 +1,33 @@
-import 'package:catbreeds/ui/pages/landing/cat_breeds_list.dart';
-import 'package:catbreeds/ui/pages/landing/search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:catbreeds/providers/cat_breed_provider.dart';
+import 'package:catbreeds/providers/search_provider.dart';
+import 'package:catbreeds/ui/pages/landing/cat_breeds_list.dart';
+import 'package:catbreeds/ui/pages/landing/search_delegate.dart';
 
-//* Landing page for android
-class AndroidLandingPage extends ConsumerWidget {
-  const AndroidLandingPage({super.key});
+class AndroidLandingPage extends ConsumerStatefulWidget {
+  const AndroidLandingPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AndroidLandingPage> createState() => _AndroidLandingPageState();
+}
+
+class _AndroidLandingPageState extends ConsumerState<AndroidLandingPage> {
+  @override
+  Widget build(BuildContext context) {
+    final searchQuery = ref.watch(searchQueryProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Catbreeds'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {
-              showMaterialSearch(context, ref);
-            },
+            onPressed: () => showMaterialSearch(context, ref),
           ),
         ],
       ),
-      body: const CatBreedsList(),
+      body: CatBreedsList(searchQuery: searchQuery),
     );
   }
 
@@ -31,7 +36,11 @@ class AndroidLandingPage extends ConsumerWidget {
       showSearch(
         context: context,
         delegate: CatBreedSearchDelegate(catBreeds),
-      );
+      ).then((result) {
+        if (result != null) {
+          ref.read(searchQueryProvider.notifier).state = result;
+        }
+      });
     });
   }
 }
