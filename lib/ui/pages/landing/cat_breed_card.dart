@@ -30,7 +30,7 @@ class CatBreedCard extends StatelessWidget {
             const SizedBox(
               height: 10.0,
             ),
-            _buildDetailsRow(),
+            _buildDetailsRow(l10n),
           ],
         ),
       ),
@@ -70,7 +70,7 @@ class CatBreedCard extends StatelessWidget {
     }
   }
 
-  Row _buildDetailsRow() {
+  Row _buildDetailsRow(AppLocalizations l10n) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -82,7 +82,7 @@ class CatBreedCard extends StatelessWidget {
         ),
         Flexible(
           child: Text(
-            catBreed.intelligence,
+            l10n.intelligence,
             overflow: TextOverflow.ellipsis,
           ),
         ),
