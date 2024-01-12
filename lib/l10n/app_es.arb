@@ -5,5 +5,6 @@
     "intelligence": "Inteligencia",
     "name": "Nombre",
     "description": "Descripción",
-    "temperament": "Temperamento"
+    "temperament": "Temperamento",
+    "noResults": "No hay resultados para"
 }

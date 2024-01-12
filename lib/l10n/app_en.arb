@@ -26,5 +26,9 @@
   "temperament": "Temperament",
   "@temperament": {
     "description": "Temperamento"
+  },
+  "noResults": "No results found for",
+  "@noResults": {
+    "description": "No hay resultados para"
   }
 }
