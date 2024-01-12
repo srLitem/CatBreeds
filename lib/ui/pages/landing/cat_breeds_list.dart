@@ -6,7 +6,9 @@ import 'package:catbreeds/providers/cat_breed_provider.dart';
 
 // * This widget has the whole list of cats from the landing page
 class CatBreedsList extends ConsumerWidget {
-  const CatBreedsList({super.key});
+  final String searchQuery;
+
+  const CatBreedsList({Key? key, this.searchQuery = ''}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -14,14 +16,19 @@ class CatBreedsList extends ConsumerWidget {
 
     return catBreeds.when(
       data: (List<CatBreed> breeds) {
+        List<CatBreed> filteredBreeds = searchQuery.isEmpty
+            ? breeds
+            : breeds
+                .where(
+                    (breed) => breed.name.toLowerCase().contains(searchQuery))
+                .toList();
         return ListView.builder(
-          itemCount: breeds.length,
+          itemCount: filteredBreeds.length,
           itemBuilder: (context, index) {
-            return CatBreedCard(catBreed: breeds[index]);
+            return CatBreedCard(catBreed: filteredBreeds[index]);
           },
         );
       },
-      //* We don´t want an error when loading the data :)
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, stack) => Center(child: Text('Error: $error')),
     );

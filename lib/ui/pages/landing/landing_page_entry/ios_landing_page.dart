@@ -1,10 +1,22 @@
-import 'package:catbreeds/ui/pages/landing/cat_breeds_list.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:catbreeds/ui/pages/landing/cat_breeds_list.dart';
 
-//* Landing page for iOS
-class IOSLandingPage extends StatelessWidget {
-  const IOSLandingPage({super.key});
+class IOSLandingPage extends ConsumerStatefulWidget {
+  const IOSLandingPage({Key? key}) : super(key: key);
+
+  @override
+  ConsumerState<IOSLandingPage> createState() => _IOSLandingPageState();
+}
+
+class _IOSLandingPageState extends ConsumerState<IOSLandingPage> {
+  String searchQuery = '';
+
+  void updateSearchQuery(String newQuery) {
+    setState(() {
+      searchQuery = newQuery.toLowerCase();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +26,30 @@ class IOSLandingPage extends StatelessWidget {
         trailing: CupertinoButton(
           padding: EdgeInsets.zero,
           child: const Icon(CupertinoIcons.search),
-          onPressed: () {
-            showCupertinoSearch(context);
-          },
+          onPressed: () => showCupertinoSearch(context),
         ),
       ),
-      child: const CatBreedsList(),
+      child: CatBreedsList(searchQuery: searchQuery),
     );
   }
 
   void showCupertinoSearch(BuildContext context) {
-    // TODO: I need to Implement Cupertino search functionality
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text('Search'), //TODO Localize
+          content: CupertinoSearchTextField(
+            onChanged: updateSearchQuery,
+          ),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: const Text('Cancel'), //TODO Localize
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
