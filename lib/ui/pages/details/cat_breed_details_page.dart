@@ -21,15 +21,9 @@ class CatBreedDetailPage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
-            child: Image.network(
-              //TODO: Reaplce with right url
-              'https://api.thecatapi.com/v1/images/${catBreed.referenceImageId}.jpg',
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: double.infinity,
-            ),
-          ),
+              padding:
+                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.025),
+              child: _buildCatImage()),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -56,5 +50,22 @@ class CatBreedDetailPage extends StatelessWidget {
       title: Text(title, style: Theme.of(context).textTheme.displayMedium),
       subtitle: Text(value, style: Theme.of(context).textTheme.bodySmall),
     );
+  }
+
+  Widget _buildCatImage() {
+    if (catBreed.actualURL != null && catBreed.actualURL!.isNotEmpty) {
+      return Image.network(
+        catBreed.actualURL!,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const Center(child: CircularProgressIndicator());
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return Image.asset('assets/image_not_found.png');
+        },
+      );
+    } else {
+      return Image.asset('assets/image_not_found.png');
+    }
   }
 }

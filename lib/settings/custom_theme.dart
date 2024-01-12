@@ -59,7 +59,7 @@ class CustomTheme {
           color: primaryColor,
         ),
         bodySmall: TextStyle(
-          fontSize: 16.0,
+          fontSize: 18.0,
           color: accentColor,
         ),
       ),

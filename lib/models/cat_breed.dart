@@ -7,6 +7,7 @@ class CatBreed {
   final String origin;
   final String intelligence;
   final String referenceImageId;
+  final String? actualURL;
 
   CatBreed({
     required this.id,
@@ -16,6 +17,7 @@ class CatBreed {
     required this.origin,
     required this.intelligence,
     required this.referenceImageId,
+    this.actualURL,
   });
 
   factory CatBreed.fromJson(Map<String, dynamic> json) {
@@ -40,5 +42,18 @@ class CatBreed {
       'intelligence': intelligence,
       'reference_image_id': referenceImageId,
     };
+  }
+
+  CatBreed copyWith({String? actualURL}) {
+    return CatBreed(
+      id: id,
+      name: name,
+      description: description,
+      temperament: temperament,
+      origin: origin,
+      intelligence: intelligence,
+      referenceImageId: referenceImageId,
+      actualURL: actualURL ?? this.actualURL,
+    );
   }
 }

@@ -54,17 +54,20 @@ class CatBreedCard extends StatelessWidget {
   }
 
   Widget _buildCatImage() {
-    return Image.network(
-      //TODO: Reaplce with right url
-      'https://api.thecatapi.com/v1/images/${catBreed.referenceImageId}.jpg',
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return const Center(child: CircularProgressIndicator());
-      },
-      errorBuilder: (context, error, stackTrace) {
-        return const Icon(Icons.error);
-      },
-    );
+    if (catBreed.actualURL != null && catBreed.actualURL!.isNotEmpty) {
+      return Image.network(
+        catBreed.actualURL!,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const Center(child: CircularProgressIndicator());
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return Image.asset('assets/image_not_found.png');
+        },
+      );
+    } else {
+      return Image.asset('assets/image_not_found.png');
+    }
   }
 
   Row _buildDetailsRow() {
