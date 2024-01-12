@@ -17,12 +17,12 @@ class MoreButton extends StatelessWidget {
     return Platform.isIOS
         ? CupertinoButton(
             child: Text("${l10n.more}...",
-                style: Theme.of(context).textTheme.bodyMedium),
+                style: Theme.of(context).textTheme.bodyLarge),
             onPressed: () => _goToDetailsPage(context),
           )
         : TextButton(
             child: Text("${l10n.more}...",
-                style: Theme.of(context).textTheme.bodyMedium),
+                style: Theme.of(context).textTheme.bodyLarge),
             onPressed: () => _goToDetailsPage(context),
           );
   }

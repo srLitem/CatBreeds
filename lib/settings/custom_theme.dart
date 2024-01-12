@@ -52,7 +52,7 @@ class CustomTheme {
         ),
         bodyLarge: TextStyle(
           fontSize: 20.0,
-          color: primaryColor,
+          color: accentColor,
         ),
         bodyMedium: TextStyle(
           fontSize: 18.0,
