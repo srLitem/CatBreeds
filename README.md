@@ -49,3 +49,12 @@ Para instalar y ejecutar CatBreeds en tu entorno local, sigue estos pasos:
   ```
   CAT_API_KEY={API_KEY}
   ```
+
+## Screenshots
+![image](https://github.com/srLitem/CatBreeds/assets/29027903/c5708552-f4ec-4b4e-8982-2cf08d85b4df)
+![image](https://github.com/srLitem/CatBreeds/assets/29027903/dbe169ef-fb00-4a82-a04b-2d74e061f848)
+![image](https://github.com/srLitem/CatBreeds/assets/29027903/fd7dfbdb-c079-47bc-9c49-6b64e2d20af0)
+![image](https://github.com/srLitem/CatBreeds/assets/29027903/71dd235d-9d54-4bf1-b857-aa9e5f41b34b)
+
+
+*Aplicación hecha por Santiago Rhenals Rodríguez -2024*
