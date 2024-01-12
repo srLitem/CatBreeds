@@ -19,8 +19,9 @@ class CatBreedsList extends ConsumerWidget {
         List<CatBreed> filteredBreeds = searchQuery.isEmpty
             ? breeds
             : breeds
-                .where(
-                    (breed) => breed.name.toLowerCase().contains(searchQuery))
+                .where((breed) => breed.name
+                    .toLowerCase()
+                    .contains(searchQuery.toLowerCase()))
                 .toList();
         return ListView.builder(
           itemCount: filteredBreeds.length,

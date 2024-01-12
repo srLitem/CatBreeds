@@ -10,46 +10,48 @@ class IOSLandingPage extends ConsumerStatefulWidget {
 }
 
 class _IOSLandingPageState extends ConsumerState<IOSLandingPage> {
-  String searchQuery = '';
+  late TextEditingController _searchController;
+  late FocusNode _focusNode;
 
-  void updateSearchQuery(String newQuery) {
-    setState(() {
-      searchQuery = newQuery.toLowerCase();
-    });
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: const Text('Catbreeds'),
-        trailing: CupertinoButton(
-          padding: EdgeInsets.zero,
-          child: const Icon(CupertinoIcons.search),
-          onPressed: () => showCupertinoSearch(context),
-        ),
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Catbreeds'),
       ),
-      child: CatBreedsList(searchQuery: searchQuery),
-    );
-  }
-
-  void showCupertinoSearch(BuildContext context) {
-    showCupertinoDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: const Text('Search'), //TODO Localize
-          content: CupertinoSearchTextField(
-            onChanged: updateSearchQuery,
-          ),
-          actions: <Widget>[
-            CupertinoDialogAction(
-              child: const Text('Cancel'), //TODO Localize
-              onPressed: () => Navigator.pop(context),
+      child: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CupertinoSearchTextField(
+                controller: _searchController,
+                focusNode: _focusNode,
+                onChanged: (value) => setState(() {}),
+              ),
+            ),
+            Expanded(
+              child: CatBreedsList(
+                searchQuery: _searchController.text,
+              ),
             ),
           ],
-        );
-      },
+        ),
+      ),
     );
   }
 }
